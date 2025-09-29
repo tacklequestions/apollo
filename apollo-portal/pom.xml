@@ -27,7 +27,7 @@
 	<artifactId>apollo-portal</artifactId>
 	<name>Apollo Portal</name>
 	<properties>
-		<apollo.openapi.spec.url>https://raw.githubusercontent.com/tacklequestions/apollo-openapi/main/apollo-openapi.yaml</apollo.openapi.spec.url>
+		<apollo.openapi.spec.url>https://raw.githubusercontent.com/apolloconfig/apollo-openapi/refs/heads/main/apollo-openapi.yaml</apollo.openapi.spec.url>
 		<github.path>${project.artifactId}</github.path>
 		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
 	</properties>
@@ -137,13 +137,13 @@
 
 	</dependencies>
 	<build>
-		<!-- 默认插件配置（公共部分） -->
+		<!-- openapi-generator插件配置 -->
 		<pluginManagement>
 			<plugins>
 				<plugin>
 					<groupId>org.openapitools</groupId>
 					<artifactId>openapi-generator-maven-plugin</artifactId>
-					<version>7.15.0</version>
+					<version>6.6.0</version>
 					<executions>
 						<execution>
 							<id>generate-openapi-sources</id>
@@ -277,44 +277,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<profiles>
-		<!-- Java 8 环境 -->
-		<profile>
-			<id>java8</id>
-			<activation>
-				<jdk>[1.8,1.9)</jdk>
-			</activation>
-			<build>
-				<pluginManagement>
-					<plugins>
-						<plugin>
-							<groupId>org.openapitools</groupId>
-							<artifactId>openapi-generator-maven-plugin</artifactId>
-							<version>6.6.0</version>
-						</plugin>
-					</plugins>
-				</pluginManagement>
-			</build>
-		</profile>
-
-		<!-- Java 11 及以上环境 -->
-		<profile>
-			<id>java11plus</id>
-			<activation>
-				<jdk>[11,)</jdk>
-			</activation>
-			<build>
-				<pluginManagement>
-					<plugins>
-						<plugin>
-							<groupId>org.openapitools</groupId>
-							<artifactId>openapi-generator-maven-plugin</artifactId>
-							<version>7.15.0</version>
-						</plugin>
-					</plugins>
-				</pluginManagement>
-			</build>
-		</profile>
-	</profiles>
 </project>
