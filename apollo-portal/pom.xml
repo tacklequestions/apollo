@@ -48,17 +48,14 @@
 		<dependency>
 			<groupId>org.openapitools</groupId>
 			<artifactId>jackson-databind-nullable</artifactId>
-			<version>0.2.6</version>
 		</dependency>
 		<dependency>
 			<groupId>io.swagger.core.v3</groupId>
-			<artifactId>swagger-annotations-jakarta</artifactId>
-			<version>2.2.22</version>
+			<artifactId>swagger-annotations</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>io.swagger.core.v3</groupId>
-			<artifactId>swagger-models-jakarta</artifactId>
-			<version>2.2.22</version>
+			<artifactId>swagger-models</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.ctrip.framework.apollo</groupId>
@@ -137,7 +134,7 @@
 
 	</dependencies>
 	<build>
-		<!-- openapi-generator插件配置 -->
+		<!-- openapi-generator configuration -->
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -248,13 +245,12 @@
 					</replacements>
 				</configuration>
 			</plugin>
-			<!-- OpenAPI 代码生成插件 -->
+			<!-- Generate code from OpenAPI specification during the maven build -->
 			<plugin>
 				<groupId>org.openapitools</groupId>
 				<artifactId>openapi-generator-maven-plugin</artifactId>
 			</plugin>
-
-			<!-- 把生成目录标记为源码目录，让 IDE 直接参与编译 -->
+			<!-- Add OpenAPI generated sources to the Maven compile path -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
@@ -268,7 +264,6 @@
 						</goals>
 						<configuration>
 							<sources>
-								<!-- 注意这层 src/main/java -->
 								<source>${project.build.directory}/generated-sources/openapi/src/main/java</source>
 							</sources>
 						</configuration>
